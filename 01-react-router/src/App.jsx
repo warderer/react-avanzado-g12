@@ -1,4 +1,4 @@
-import { Routes, Route, Link } from 'react-router-dom'
+import { Routes, Route, Link, useLocation } from 'react-router-dom'
 import logo from './logo.svg'
 import './App.css'
 
@@ -23,6 +23,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/portafolio" element={<Portafolio />} />
           <Route path="/contacto" element={<Contacto />} />
+          <Route path="*" element={<Error404 />} />
         </Routes>
       </header>
     </div>
@@ -52,6 +53,16 @@ function Contacto(){
   return (
     <>
       <h1>Contacto</h1>
+    </>
+  )
+}
+
+function Error404(){
+  let location = useLocation();
+  return (
+    <>
+      <h1>ERROR 404</h1>
+      <p>Recurso no encontrado: { location.pathname }</p>
     </>
   )
 }
