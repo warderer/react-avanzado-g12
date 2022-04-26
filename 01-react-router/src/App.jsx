@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Link } from 'react-router-dom'
 import logo from './logo.svg'
 import './App.css'
 
@@ -6,6 +6,19 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Home </Link>
+            </li>
+            <li>
+              <Link to="/portafolio">Portafolio </Link>
+            </li>
+            <li>
+              <Link to="/contacto">Contacto </Link>
+            </li>
+          </ul>
+        </nav>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/portafolio" element={<Portafolio />} />
