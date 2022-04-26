@@ -1,4 +1,4 @@
-import { Routes, Route, Link, useLocation, useParams, Outlet } from 'react-router-dom'
+import { Routes, Route, Link, useLocation, useParams, Outlet, useNavigate } from 'react-router-dom'
 import logo from './logo.svg'
 import './App.css'
 
@@ -88,12 +88,25 @@ function PortafolioDetalle(){
   ]
 
   const { pid } = useParams();
+  const navigate = useNavigate();
 
   return(
     <>
       <h3>ID: {proyectos[pid-1].id}</h3>
       <h4>Nombre: {proyectos[pid-1].nombre} </h4>
       <p>Descripción: {proyectos[pid-1].desc} </p>
+
+      <button onClick={()=>{
+        /* <Link to="/portafolio"> no funcionaria aquí.
+        Cuando quiero usar un enlace dentro de una lógica de JS,
+        necesito usar useHistory(React Router v5) o useNavigate(React Router v6)
+        */
+        navigate('/portafolio')
+        // Si quiero ir a la página anterior (go back): navigate(-1);
+        // Si quiero ir a la página siguiente (go next): navigate(1);
+      }}>
+        Nos vamos al Portafolio
+      </button>
     </>
   )
 }
