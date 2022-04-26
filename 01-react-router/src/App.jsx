@@ -1,4 +1,4 @@
-import { Routes, Route, Link, useLocation } from 'react-router-dom'
+import { Routes, Route, Link, useLocation, useParams, Outlet } from 'react-router-dom'
 import logo from './logo.svg'
 import './App.css'
 
@@ -21,7 +21,9 @@ function App() {
         </nav>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/portafolio" element={<Portafolio />} />
+          <Route path="/portafolio" element={<Portafolio />} >
+            <Route path=":pid" element={<PortafolioDetalle />} />
+          </Route>
           <Route path="/contacto" element={<Contacto />} />
           <Route path="*" element={<Error404 />} />
         </Routes>
@@ -44,8 +46,19 @@ function Portafolio(){
     <>
       <h1>Portafolio</h1>
       <p>Este es mi portafolio</p>
+      <Outlet />
+      <ul>
+        <li>
+          <Link to="/portafolio/1">Pinterest</Link>
+        </li>
+        <li>
+          <Link to="/portafolio/2">Cajero</Link>
+        </li>
+        <li>
+          <Link to="/portafolio/3">Pokédex</Link>
+        </li>
+      </ul>
     </>
-  
   )
 }
 
@@ -63,6 +76,24 @@ function Error404(){
     <>
       <h1>ERROR 404</h1>
       <p>Recurso no encontrado: { location.pathname }</p>
+    </>
+  )
+}
+
+function PortafolioDetalle(){
+  const proyectos = [
+    { id: 1, nombre: "Pinterest", desc: "Un clon de pinterests con HTML y CSS" },
+    { id: 2, nombre: "Cajero", desc: "Simulador de cajero autómatico con HTML, CSS y JS" },
+    { id: 3, nombre: "Pokédex", desc: "Consumir la PokéAPI y mostrar un listado de Pokémons con HTML, CSS y JS" }
+  ]
+
+  const { pid } = useParams();
+
+  return(
+    <>
+      <h3>ID: {proyectos[pid-1].id}</h3>
+      <h4>Nombre: {proyectos[pid-1].nombre} </h4>
+      <p>Descripción: {proyectos[pid-1].desc} </p>
     </>
   )
 }
