@@ -1,6 +1,7 @@
 import RefDom from './components/RefDom'
 import RefLogin from './components/RefLogin'
 import SimpleForm from './components/SimpleForm'
+import FormHook from './components/FormHook'
 import './App.css'
 
 function App () {
@@ -10,6 +11,7 @@ function App () {
         <RefDom />
         <RefLogin />
         <SimpleForm />
+        <FormHook />
       </header>
     </div>
   )
