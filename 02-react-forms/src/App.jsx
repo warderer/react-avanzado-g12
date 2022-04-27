@@ -1,4 +1,5 @@
 import RefDom from './components/RefDom'
+import RefLogin from './components/RefLogin'
 import './App.css'
 
 function App () {
@@ -6,6 +7,7 @@ function App () {
     <div className='App'>
       <header className='App-header'>
         <RefDom />
+        <RefLogin />
       </header>
     </div>
   )
