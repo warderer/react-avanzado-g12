@@ -8,12 +8,11 @@ const Home = () => {
     <div className='home-container'>
       <SongProvider>
         <div className='izquierdo'>
-          <h2>Izquierdo</h2>
+          <h2>Lista de Canciones</h2>
           <SongList />
         </div>
         <div className='derecho'>
           <SongDetails />
-          <h2>Derecho</h2>
         </div>
       </SongProvider>
     </div>
