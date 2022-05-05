@@ -1,10 +1,25 @@
+import useForm from '@/hooks/useForm'
 import '@/assets/css/form.css'
 import logo from '@/logo.svg'
 
 const Signup = () => {
+  const sendData = (data) => {
+    console.log(data)
+    // Logica de la función que maneja el envio del formulario
+  }
+
+  const { input, handleInputChange, handleSubmit } = useForm(sendData, {
+    first_name: '',
+    last_name: '',
+    email: '',
+    gender: '',
+    password: '',
+    password_confirm: ''
+  })
+
   return (
     <main className='form-signin'>
-      <form onSubmit={() => {}}>
+      <form onSubmit={handleSubmit}>
         <img className='mb-4' src={logo} alt='' width='72' height='57' />
         <h1 className='h3 mb-3 fw-normal'>Please sign up</h1>
 
@@ -15,8 +30,8 @@ const Signup = () => {
             id='first_name'
             name='first_name'
             placeholder='John'
-            value=''
-            onChange={() => {}}
+            value={input.first_name}
+            onChange={handleInputChange}
           />
           <label htmlFor='first_name'>First name</label>
         </div>
@@ -28,8 +43,8 @@ const Signup = () => {
             id='last_name'
             name='last_name'
             placeholder='Doe'
-            value=''
-            onChange={() => {}}
+            value={input.last_name}
+            onChange={handleInputChange}
           />
           <label htmlFor='last_name'>Last name</label>
         </div>
@@ -41,8 +56,8 @@ const Signup = () => {
             id='email'
             name='email'
             placeholder='name@example.com'
-            value=''
-            onChange={() => {}}
+            value={input.email}
+            onChange={handleInputChange}
           />
           <label htmlFor='email'>Email address</label>
         </div>
@@ -53,8 +68,8 @@ const Signup = () => {
             id='gender'
             name='gender'
             required=''
-            value=''
-            onChange={() => {}}
+            value={input.gender}
+            onChange={handleInputChange}
           >
             <option value=''>Choose...</option>
             <option value='M'>Male</option>
@@ -70,8 +85,8 @@ const Signup = () => {
             id='password'
             name='password'
             placeholder='Password'
-            value=''
-            onChange={() => {}}
+            value={input.password}
+            onChange={handleInputChange}
           />
           <label htmlFor='password'>Password</label>
         </div>
@@ -83,8 +98,8 @@ const Signup = () => {
             id='password_confirm'
             name='password_confirm'
             placeholder='Repeat your Password'
-            value=''
-            onChange={() => {}}
+            value={input.password_confirm}
+            onChange={handleInputChange}
           />
           <label htmlFor='password_confirm'>Repeat your Password</label>
         </div>
