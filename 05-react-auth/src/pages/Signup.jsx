@@ -1,11 +1,34 @@
+import { useNavigate } from 'react-router-dom'
 import useForm from '@/hooks/useForm'
+import axios from 'axios'
 import '@/assets/css/form.css'
 import logo from '@/logo.svg'
 
 const Signup = () => {
+  const navigate = useNavigate()
   const sendData = (data) => {
     console.log(data)
     // Logica de la función que maneja el envio del formulario
+
+    if (data.password === data.password_confirm) {
+      // Si ambas contraseñas coinciden, implemento mi logica
+      console.log('Los password si coinciden')
+
+      // Elimino password_confirm de mi objeto para que no me de error de bad request la API
+      delete data.password_confirm
+      axios.post('https://ecomerce-master.herokuapp.com/api/v1/signup', data)
+        .then((response) => {
+          if (response.status === 200) {
+            // Cuando el usuario se crea exitosamente
+            console.log(response.status)
+            navigate('/login')
+          }
+        }).catch((error) => {
+          console.log(error.message)
+        })
+    } else {
+      console.log('Passwords no coinciden')
+    }
   }
 
   const { input, handleInputChange, handleSubmit } = useForm(sendData, {
