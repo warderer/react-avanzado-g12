@@ -1,11 +1,14 @@
+import { useContext } from 'react'
 import axios from 'axios'
 import useForm from '@/hooks/useForm'
 import { useNavigate } from 'react-router-dom'
+import { AuthContext } from '@/context/AuthContext'
 import '@/assets/css/form.css'
 import logo from '@/logo.svg'
 
 const Login = () => {
   const navigate = useNavigate()
+  const { loginUser } = useContext(AuthContext)
 
   const sendData = (data) => {
     axios.post('https://ecomerce-master.herokuapp.com/api/v1/login', data)
@@ -13,7 +16,8 @@ const Login = () => {
         console.log(response.data)
         // Guardar el token en el localStorage del navegador
         // Este dato permanece aún si el navegador se cierra y se vuelve a abrir
-        window.localStorage.setItem('token', response.data.token)
+        loginUser(response.data.token)
+        // window.localStorage.setItem('token', response.data.token)
         navigate('/')
       })
       .catch((error) => {
