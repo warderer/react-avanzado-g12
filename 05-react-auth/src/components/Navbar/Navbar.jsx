@@ -1,6 +1,9 @@
+import { useContext } from 'react'
 import { Link } from 'react-router-dom'
+import { AuthContext } from '@/context/AuthContext'
 
 const Navbar = () => {
+  const { isAuth } = useContext(AuthContext)
   return (
     <div className='container'>
       <header className='d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom'>
@@ -14,9 +17,18 @@ const Navbar = () => {
         </ul>
 
         <div className='col-md-3 text-end'>
-          <Link to='/login'>
-            <button type='button' className='btn btn-outline-primary me-2'>Login</button>
-          </Link>
+          {isAuth
+            ? (
+              <Link to='/logout'>
+                <button type='button' className='btn btn-outline-primary me-2'>Logout</button>
+              </Link>
+              )
+            : (
+              <Link to='/login'>
+                <button type='button' className='btn btn-outline-primary me-2'>Login</button>
+              </Link>
+              )}
+
           <Link to='/signup'>
             <button type='button' className='btn btn-primary'>Sign-up</button>
           </Link>
