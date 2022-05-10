@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect } from 'react'
-import getPayload from '@/util/getPayload'
+import getPayload from '@/utils/getPayload'
 
 // #1 Crear el contexto
 export const AuthContext = createContext()
