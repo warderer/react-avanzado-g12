@@ -24,14 +24,16 @@ const Navbar = () => {
               </Link>
               )
             : (
-              <Link to='/login'>
-                <button type='button' className='btn btn-outline-primary me-2'>Login</button>
-              </Link>
+              <>
+                <Link to='/login'>
+                  <button type='button' className='btn btn-outline-primary me-2'>Login</button>
+                </Link>
+                <Link to='/signup'>
+                  <button type='button' className='btn btn-primary'>Sign-up</button>
+                </Link>
+              </>
               )}
 
-          <Link to='/signup'>
-            <button type='button' className='btn btn-primary'>Sign-up</button>
-          </Link>
         </div>
       </header>
     </div>
